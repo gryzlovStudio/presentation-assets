@@ -1,15 +1,650 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Powered 3D Pipeline - Gryzlov Studio</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="module" src="./presentation.js"></script>
-</body>
-</html>
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight, Zap, Clock, TrendingDown, CheckCircle, ExternalLink } from 'lucide-react';
+
+const PipelinePresentation = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % 9);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + 9) % 9);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 p-3">
+      <div className="max-w-2xl mx-auto">
+        <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+          <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-5">
+            <h1 className="text-2xl font-bold mb-1">
+              {currentSlide === 0 && "AI-Powered 3D Pipeline"}
+              {currentSlide === 1 && "Stage 1: Concept Art"}
+              {currentSlide === 2 && "Stage 2: 3D Modeling"}
+              {currentSlide === 3 && "Stage 3: Texturing"}
+              {currentSlide === 4 && "Stage 4: Rigging"}
+              {currentSlide === 5 && "Stage 5: Animation"}
+              {currentSlide === 6 && "Custom Automation"}
+              {currentSlide === 7 && "Game Integration"}
+              {currentSlide === 8 && "Our Portfolio"}
+            </h1>
+            <p className="text-sm opacity-90">
+              {currentSlide === 0 && "Game Content Creation"}
+              {currentSlide === 1 && "Rapid Visualization"}
+              {currentSlide === 2 && "Concept to Game Asset"}
+              {currentSlide === 3 && "Material Creation"}
+              {currentSlide === 4 && "Animation Prep"}
+              {currentSlide === 5 && "AI-Powered Animation"}
+              {currentSlide === 6 && "Unique Solutions"}
+              {currentSlide === 7 && "Production Case Study"}
+              {currentSlide === 8 && "AI-Powered Creation"}
+            </p>
+          </div>
+
+          <div className="p-5 overflow-y-auto" style={{minHeight: '480px', maxHeight: '600px'}}>
+            {currentSlide === 0 && (
+              <div className="space-y-6">
+                <div className="text-center">
+                  <div className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg text-lg font-bold mb-4">
+                    Concept to Animation with AI
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="bg-purple-50 p-5 rounded-lg">
+                    <Zap className="w-10 h-10 text-purple-600 mb-2 mx-auto" />
+                    <h3 className="font-bold text-lg mb-1 text-center">Production Acceleration</h3>
+                    <p className="text-gray-700 text-sm text-center">60-80% time reduction at every stage</p>
+                  </div>
+                  <div className="bg-blue-50 p-5 rounded-lg">
+                    <CheckCircle className="w-10 h-10 text-blue-600 mb-2 mx-auto" />
+                    <h3 className="font-bold text-lg mb-1 text-center">Game Engine Ready</h3>
+                    <p className="text-gray-700 text-sm text-center">Optimized for Unity, Unreal Engine</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {currentSlide === 1 && (
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-purple-100 to-blue-100 p-4 rounded-lg">
+                  <h3 className="font-bold text-xl mb-3 text-center">AI Character Concepts</h3>
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-purple-600 text-xs">Speed</div>
+                      <div className="text-2xl font-bold">15min</div>
+                      <div className="text-xs text-gray-600">vs 2-3 days</div>
+                    </div>
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-blue-600 text-xs">Variations</div>
+                      <div className="text-2xl font-bold">50+</div>
+                      <div className="text-xs text-gray-600">per session</div>
+                    </div>
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-green-600 text-xs">Savings</div>
+                      <div className="text-2xl font-bold">75%</div>
+                      <div className="text-xs text-gray-600">time</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-white border-2 border-purple-300 rounded-lg p-4">
+                  <h4 className="font-bold text-sm mb-3">Character Concept Examples</h4>
+                  <div className="space-y-3">
+                    <div className="rounded-lg overflow-hidden border-2 border-purple-200">
+                      <img 
+                        src="https://raw.githubusercontent.com/gryzlovStudio/presentation-assets/main/Banana.png" 
+                        alt="Banana Dog variations"
+                        className="w-full h-auto"
+                      />
+                      <p className="text-xs text-center py-2 bg-purple-50 font-semibold">Banana Dog - Multiple Style Variations</p>
+                    </div>
+                    <div className="rounded-lg overflow-hidden border-2 border-purple-200">
+                      <img 
+                        src="https://raw.githubusercontent.com/gryzlovStudio/presentation-assets/main/Dog.png" 
+                        alt="Bulldog concepts"
+                        className="w-full h-auto"
+                      />
+                      <p className="text-xs text-center py-2 bg-purple-50 font-semibold">Bulldog Character Concepts</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white border-2 border-purple-200 p-4 rounded-lg">
+                  <h4 className="font-bold text-sm mb-2 flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mr-1" />
+                    Client Benefits
+                  </h4>
+                  <ul className="space-y-1 text-gray-700 text-xs">
+                    <li>• Instant visualization for approval</li>
+                    <li>• Dozens of style options at no cost</li>
+                    <li>• Complete understanding before production</li>
+                    <li>• Fast iteration on feedback</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {currentSlide === 2 && (
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-blue-100 to-cyan-100 p-4 rounded-lg">
+                  <h3 className="font-bold text-xl mb-3 text-center">AI-Assisted 3D</h3>
+                  <div className="grid grid-cols-2 gap-2 mb-3">
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-blue-600 text-xs">Base Model</div>
+                      <div className="text-2xl font-bold">1-2h</div>
+                      <div className="text-xs text-gray-600">vs 1-2 weeks</div>
+                    </div>
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-cyan-600 text-xs">Time Cut</div>
+                      <div className="text-2xl font-bold">80%</div>
+                      <div className="text-xs text-gray-600">faster</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white border-2 border-blue-300 rounded-lg p-4">
+                  <h4 className="font-bold text-sm mb-3">From Concept to 3D Model</h4>
+                  <div className="space-y-2">
+                    <div className="rounded-lg overflow-hidden border-2 border-blue-200">
+                      <img 
+                        src="https://raw.githubusercontent.com/gryzlovStudio/presentation-assets/main/IMG_7654.JPG" 
+                        alt="Step 1 Concept"
+                        className="w-full h-auto"
+                      />
+                      <p className="text-xs text-center py-1.5 bg-blue-50 font-semibold">Step 1: 2D Concept</p>
+                    </div>
+                    <div className="rounded-lg overflow-hidden border-2 border-blue-200">
+                      <img 
+                        src="https://raw.githubusercontent.com/gryzlovStudio/presentation-assets/main/IMG_7655.jpg" 
+                        alt="Step 2 AI 3D"
+                        className="w-full h-auto"
+                      />
+                      <p className="text-xs text-center py-1.5 bg-blue-50 font-semibold">Step 2: AI Generated 3D</p>
+                    </div>
+                    <div className="rounded-lg overflow-hidden border-2 border-blue-200">
+                      <a 
+                        href="https://vimeo.com/1128145026" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block bg-gradient-to-br from-blue-400 to-purple-500 p-8 text-center hover:opacity-90 transition-opacity"
+                      >
+                        <div className="text-white">
+                          <div className="text-4xl mb-2">▶️</div>
+                          <div className="font-bold text-lg">View 3D Model Video</div>
+                          <div className="text-sm mt-1 opacity-90">Click to watch on Vimeo</div>
+                        </div>
+                      </a>
+                      <p className="text-xs text-center py-1.5 bg-blue-50 font-semibold">Step 3: Refined Game-Ready</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white border-2 border-blue-200 p-4 rounded-lg">
+                  <h4 className="font-bold text-sm mb-2">Technical Process</h4>
+                  <ul className="space-y-1 text-xs text-gray-700">
+                    <li>• Auto base geometry generation</li>
+                    <li>• AI topology optimization</li>
+                    <li>• Auto retopology</li>
+                    <li>• Poly-count control for engines</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {currentSlide === 3 && (
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-cyan-100 to-teal-100 p-4 rounded-lg">
+                  <h3 className="font-bold text-xl mb-3 text-center">AI PBR Materials</h3>
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-cyan-600 text-xs">Time</div>
+                      <div className="text-2xl font-bold">30m</div>
+                      <div className="text-xs text-gray-600">full set</div>
+                    </div>
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-teal-600 text-xs">Quality</div>
+                      <div className="text-2xl font-bold">4K</div>
+                      <div className="text-xs text-gray-600">ready</div>
+                    </div>
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-green-600 text-xs">Save</div>
+                      <div className="text-2xl font-bold">70%</div>
+                      <div className="text-xs text-gray-600">time</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white border-2 border-cyan-300 rounded-lg p-4">
+                  <h4 className="font-bold text-sm mb-3">PBR Texture Generation</h4>
+                  <div className="space-y-3">
+                    <div className="rounded-lg overflow-hidden border-2 border-cyan-200">
+                      <img 
+                        src="https://raw.githubusercontent.com/gryzlovStudio/presentation-assets/main/Screenshot%202568-10-17%20at%2016.12.03.png" 
+                        alt="Texture maps"
+                        className="w-full h-auto"
+                      />
+                      <p className="text-xs text-center py-1.5 bg-cyan-50 font-semibold">Albedo, Normal, AO Maps</p>
+                    </div>
+                    <div className="rounded-lg overflow-hidden border-2 border-cyan-200">
+                      <img 
+                        src="https://raw.githubusercontent.com/gryzlovStudio/presentation-assets/main/Screenshot%202568-10-17%20at%2016.11.36.png" 
+                        alt="Final render"
+                        className="w-full h-auto"
+                      />
+                      <p className="text-xs text-center py-1.5 bg-cyan-50 font-semibold">Final Rendered Character</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white border-2 border-cyan-200 p-4 rounded-lg">
+                  <h4 className="font-bold text-sm mb-2">PBR-Ready for Engines</h4>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div>✓ Albedo / Diffuse</div>
+                    <div>✓ Normal Maps</div>
+                    <div>✓ Roughness</div>
+                    <div>✓ Metallic</div>
+                    <div>✓ Ambient Occlusion</div>
+                    <div>✓ Height Maps</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {currentSlide === 4 && (
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-orange-100 to-red-100 p-4 rounded-lg">
+                  <h3 className="font-bold text-xl mb-3 text-center">Automated Rigging</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-orange-600 text-xs">Base Rig</div>
+                      <div className="text-2xl font-bold">2-4h</div>
+                      <div className="text-xs text-gray-600">vs 2-3 days</div>
+                    </div>
+                    <div className="bg-white p-3 rounded shadow">
+                      <div className="font-semibold text-red-600 text-xs">Faster</div>
+                      <div className="text-2xl font-bold">65%</div>
+                      <div className="text-xs text-gray-600">savings</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white border-2 border-orange-300 rounded-lg p-4">
+                  <h4 className="font-bold text-sm mb-3">Rigging Tools and Systems</h4>
+                  <div className="rounded-lg overflow-hidden border-2 border-orange-200 mb-3">
+                    <img 
+                      src="https://raw.githubusercontent.com/gryzlovStudio/presentation-assets/main/Screenshot%202568-10-17%20at%2016.18.39.png" 
+                      alt="Rigging example"
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-700 mb-3">
+                    We utilize advanced auto-rigging systems for fast humanoid character setup with built-in automatic weight painting.
+                  </p>
+                </div>
+
+                <div className="bg-white border-2 border-orange-200 p-4 rounded-lg">
+                  <h4 className="font-bold text-sm mb-2">Technologies</h4>
+                  <ul className="space-y-1 text-xs text-gray-700">
+                    <li>• Mixamo for quick humanoid rigs</li>
+                    <li>• AccuRig for auto-rigging</li>
+                    <li>• CloudRig extension for complex rigs</li>
+                    <li>• Custom scripts for weight painting</li>
+                    <li>• Auto weight distribution systems</li>
+                  </ul>
+                </div>
+
+                <div className="bg-white border-2 border-red-200 p-4 rounded-lg">
+                  <h4 className="font-bold text-sm mb-2">Compatibility</h4>
+                  <ul className="space-y-1 text-xs text-gray-700">
+                    <li>• Unity Humanoid / Generic Rig</li>
+                    <li>• Unreal Engine Skeleton</li>
+                    <li>• Mixamo animation library</li>
+                    <li>• Standard formats (FBX, GLTF)</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {currentSlide === 5 && (
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-lg">
+                  <h3 className="font-bold text-xl mb-3 text-center">AI Animation Pipeline</h3>
+                  <p className="text-xs text-gray-700 text-center mb-2">
+                    Using AI to accelerate background creation, facial animation, and secondary characters
+                  </p>
+                </div>
+
+                <div className="bg-white border-2 border-purple-300 rounded-lg p-4">
+                  <h4 className="font-bold text-sm mb-2">1. AI-Generated Animated Backgrounds</h4>
+                  <div className="rounded-lg overflow-hidden border-2 border-purple-200 mb-2">
+                    <a 
+                      href="https://vimeo.com/1128149338" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block bg-gradient-to-br from-purple-400 to-pink-500 p-8 text-center hover:opacity-90 transition-opacity"
+                    >
+                      <div className="text-white">
+                        <div className="text-4xl mb-2">▶️</div>
+                        <div className="font-bold text-lg">Background Animation</div>
+                        <div className="text-sm mt-1 opacity-90">Click to watch</div>
+                      </div>
+                    </a>
+                  </div>
+                  <p className="text-xs text-gray-700">
+                    Generated and animated backgrounds using Kling and Runway. Created complete environment in 1 hour vs days of manual work. Character integrated with VFX techniques.
+                  </p>
+                </div>
+
+                <div className="bg-white border-2 border-pink-300 rounded-lg p-4">
+                  <h4 className="font-bold text-sm mb-2">2. Facial Motion Capture and Lip-Sync</h4>
+                  <div className="rounded-lg overflow-hidden border-2 border-pink-200 mb-2">
+                    <a 
+                      href="https://vimeo.com/1128149368" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block bg-gradient-to-br from-pink-400 to-red-500 p-8 text-center hover:opacity-90 transition-opacity"
+                    >
+                      <div className="text-white">
+                        <div className="text-4xl mb-2">▶️</div>
+                        <div className="font-bold text-lg">Facial Animation</div>
+                        <div className="text-sm mt-1 opacity-90">Click to watch</div>
+                      </div>
+                    </a>
+                  </div>
+                  <p className="text-xs text-gray-700">
+                    Facial mocap transferred via bone system (not blend shapes). Works for any character: dogs, humans, monsters. Faster and more functional than MetaHuman.
+                  </p>
+                </div>
+
+                <div className="bg-white border-2 border-red-300 rounded-lg p-4">
+                  <h4 className="font-bold text-sm mb-2">3. Secondary Characters and Crowd</h4>
+                  <div className="rounded-lg overflow-hidden border-2 border-red-200 mb-2">
+                    <a 
+                      href="https://vimeo.com/1128149403" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block bg-gradient-to-br from-red-400 to-orange-500 p-8 text-center hover:opacity-90 transition-opacity"
+                    >
+                      <div className="text-white">
+                        <div className="text-4xl mb-2">▶️</div>
+                        <div className="font-bold text-lg">Secondary Characters</div>
+                        <div className="text-sm mt-1 opacity-90">Click to watch</div>
+                      </div>
+                    </a>
+                  </div>
+                  <p className="text-xs text-gray-700">
+                    AI-assisted creation of secondary characters and background animations for scene population.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {currentSlide === 6 && (
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-indigo-100 to-purple-100 p-4 rounded-lg">
+                  <h3 className="font-bold text-xl mb-2 text-center">Task-Specific Tools</h3>
+                  <p className="text-gray-700 text-xs text-center">Custom automation for repetitive processes</p>
+                </div>
+
+                <div className="bg-white border-2 border-indigo-300 rounded-lg p-4">
+                  <h4 className="font-bold text-sm mb-3">Procedural Animation Script</h4>
+                  <div className="rounded-lg overflow-hidden border-2 border-indigo-200 mb-3">
+                    <a 
+                      href="https://vimeo.com/1128151442" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block bg-gradient-to-br from-indigo-400 to-purple-500 p-8 text-center hover:opacity-90 transition-opacity"
+                    >
+                      <div className="text-white">
+                        <div className="text-4xl mb-2">▶️</div>
+                        <div className="font-bold text-lg">Automation Example</div>
+                        <div className="text-sm mt-1 opacity-90">Click to watch</div>
+                      </div>
+                    </a>
+                  </div>
+                  <div className="bg-indigo-50 p-3 rounded-lg mb-3">
+                    <p className="font-semibold text-xs mb-1">Challenge: Animate hundreds of objects</p>
+                    <p className="text-xs text-gray-700">Developed procedural animation script for complex repetitive tasks</p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="bg-red-50 p-3 rounded">
+                      <div className="font-bold text-red-600 text-xs mb-1">Without</div>
+                      <div className="text-xl font-bold">40h</div>
+                      <div className="text-xs">manual</div>
+                    </div>
+                    <div className="bg-green-50 p-3 rounded">
+                      <div className="font-bold text-green-600 text-xs mb-1">With Script</div>
+                      <div className="text-xl font-bold">2h</div>
+                      <div className="text-xs">setup</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white border-2 border-purple-200 p-4 rounded-lg">
+                  <h4 className="font-bold text-sm mb-2">Automation Types</h4>
+                  <ul className="grid grid-cols-1 gap-1 text-xs">
+                    <li>• Procedural object generation</li>
+                    <li>• Batch asset processing</li>
+                    <li>• Animation automation</li>
+                    <li>• Platform optimization</li>
+                    <li>• Batch export to engines</li>
+                    <li>• Quality verification</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {currentSlide === 7 && (
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-blue-100 to-purple-100 p-4 rounded-lg">
+                  <h3 className="font-bold text-xl mb-2 text-center">Melted Time</h3>
+                  <p className="text-xs text-gray-700 text-center">
+                    Using AI technologies, we created fast animations and optimized assets for this complete game project
+                  </p>
+                </div>
+
+                <div className="bg-white border-2 border-blue-300 rounded-lg p-4">
+                  <a 
+                    href="https://store.steampowered.com/app/3269430/Melted_Time/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div className="rounded-lg overflow-hidden border-2 border-blue-200 mb-3">
+                      <img 
+                        src="https://cdn.akamai.steamstatic.com/steam/apps/3269430/header.jpg" 
+                        alt="Melted Time game"
+                        className="w-full h-auto"
+                      />
+                    </div>
+                    <div className="flex items-center justify-center gap-2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                      <span className="font-bold text-sm">View on Steam</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </div>
+                  </a>
+                </div>
+
+                <div className="bg-white border-2 border-blue-200 p-4 rounded-lg">
+                  <h4 className="font-bold text-sm mb-2 text-blue-600">Unity Optimization</h4>
+                  <ul className="space-y-1 text-xs text-gray-700">
+                    <li>✓ Fast animation pipeline</li>
+                    <li>✓ Optimized character models</li>
+                    <li>✓ Performance-ready assets</li>
+                    <li>✓ Complete game integration</li>
+                  </ul>
+                </div>
+
+                <div className="bg-white border-2 border-purple-200 p-4 rounded-lg">
+                  <h4 className="font-bold text-sm mb-2 text-purple-600">Engine Compatibility</h4>
+                  <ul className="space-y-1 text-xs text-gray-700">
+                    <li>✓ Unity (as shown in Melted Time)</li>
+                    <li>✓ Unreal Engine support</li>
+                    <li>✓ Cross-platform optimization</li>
+                    <li>✓ Mobile to PC/Console ready</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {currentSlide === 8 && (
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-green-100 to-emerald-100 p-4 rounded-lg">
+                  <h3 className="font-bold text-2xl mb-2 text-center">Total Savings</h3>
+                  <div className="grid grid-cols-1 gap-4">
+                    <div className="bg-white p-4 rounded-lg shadow-lg">
+                      <Clock className="w-10 h-10 text-green-600 mb-2 mx-auto" />
+                      <div className="text-center">
+                        <div className="text-4xl font-bold text-green-600">60-80%</div>
+                        <div className="text-sm mt-1">time reduction</div>
+                      </div>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg shadow-lg">
+                      <TrendingDown className="w-10 h-10 text-blue-600 mb-2 mx-auto" />
+                      <div className="text-center">
+                        <div className="text-4xl font-bold text-blue-600">3-5x</div>
+                        <div className="text-sm mt-1">more iterations</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white border-2 border-purple-300 rounded-lg p-4">
+                  <h4 className="font-bold text-lg mb-3 text-center">Gryzlov Studio</h4>
+                  <p className="text-xs text-gray-700 mb-3 text-center">
+                    We create characters and animations using AI, with manual refinement to achieve perfect results for clients in shortest timeframes.
+                  </p>
+                  <a 
+                    href="https://www.behance.net/gryzlovstudio" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg hover:opacity-90 transition-opacity">
+                      <span className="font-bold text-sm">View Portfolio on Behance</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </div>
+                  </a>
+                </div>
+
+                <div className="bg-white border-2 border-green-200 p-4 rounded-lg">
+                  <h4 className="font-bold text-sm mb-3">Pipeline Comparison</h4>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center pb-2 border-b text-xs">
+                      <span className="font-semibold">Stage</span>
+                      <div className="flex gap-4">
+                        <span className="font-semibold text-red-600">Old</span>
+                        <span className="font-semibold text-green-600">AI</span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <span>Concept</span>
+                      <div className="flex gap-4">
+                        <span className="text-red-600">2-3d</span>
+                        <span className="text-green-600 font-bold">15m</span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <span>3D Model</span>
+                      <div className="flex gap-4">
+                        <span className="text-red-600">1-2w</span>
+                        <span className="text-green-600 font-bold">1-2h</span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <span>Texturing</span>
+                      <div className="flex gap-4">
+                        <span className="text-red-600">2-3d</span>
+                        <span className="text-green-600 font-bold">30m</span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <span>Rigging</span>
+                      <div className="flex gap-4">
+                        <span className="text-red-600">2-3d</span>
+                        <span className="text-green-600 font-bold">2-4h</span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center pt-2 border-t font-bold text-xs">
+                      <span>TOTAL</span>
+                      <div className="flex gap-4">
+                        <span className="text-red-600">3-4w</span>
+                        <span className="text-green-600">2-3d</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg border-2 border-purple-200">
+                  <h4 className="font-bold text-sm mb-2 text-center">Key Advantages</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-start">
+                      <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-xs">Fast client approval</span>
+                    </div>
+                    <div className="flex items-start">
+                      <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-xs">Multiple iterations at no extra cost</span>
+                    </div>
+                    <div className="flex items-start">
+                      <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-xs">Optimization for any platform</span>
+                    </div>
+                    <div className="flex items-start">
+                      <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-xs">Game-ready assets with manual refinement</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="bg-gray-100 p-4 flex items-center justify-between">
+            <button
+              onClick={prevSlide}
+              className="flex items-center gap-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+              disabled={currentSlide === 0}
+            >
+              <ChevronLeft className="w-4 h-4" />
+              Back
+            </button>
+
+            <div className="flex gap-1.5">
+              {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentSlide
+                      ? 'bg-purple-600 w-6'
+                      : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextSlide}
+              className="flex items-center gap-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+              disabled={currentSlide === 8}
+            >
+              Next
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-4 text-center text-white text-xs opacity-75">
+          <p>AI-Powered 3D Pipeline | GamesCon 2025</p>
+          <p className="mt-1">{currentSlide + 1} / 9</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PipelinePresentation;
